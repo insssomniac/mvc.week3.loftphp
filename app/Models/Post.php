@@ -16,7 +16,7 @@ class Post
 
     public function __construct(array $data)
     {
-        $this->text = $data['content'];
+        $this->text = $data['text'];
         $this->authorId = $data['author_id'];
         $this->image = $data['image'] ?? '';
     }
@@ -24,9 +24,9 @@ class Post
     public function createPost()
     {
         $db = Db::getInstance();
-        $res = $db->execQuery("INSERT INTO posts (content, author_id, image) 
-            VALUES (:content, :author_id, :image)",
-            [':content' => $this->text, ':author_id' => $this->authorId, ':image' => $this->image]);
+        $res = $db->execQuery("INSERT INTO posts (text, author_id, image) 
+            VALUES (:text, :author_id, :image)",
+            [':text' => $this->text, ':author_id' => $this->authorId, ':image' => $this->image]);
 
         return $res;
     }
@@ -143,7 +143,7 @@ class Post
             'author_id' => $this->authorId,
             'content' => $this->text,
             'created_at' => $this->createdAt,
-            'image' => $this->image;
+            'image' => $this->image,
         ];
     }
 

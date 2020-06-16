@@ -9,7 +9,6 @@ class User
     private $name;
     private $password;
     private $email;
-    private $registeredAt;
 
     public function __construct(array $data)
     {
@@ -53,8 +52,8 @@ class User
     public function addUser()
     {
         $db = Db::getInstance();
-        $res = $db->execQuery("INSERT INTO users (name, password, registered_at, email) 
-            VALUES (:name, :password, :registered_at, :email)",
+        $res = $db->execQuery("INSERT INTO users (name, password, email) 
+            VALUES (:name, :password, :email)",
             [
                 ':name' => $this->name,
                 ':password' => self::getPasswordHash($this->password),

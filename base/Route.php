@@ -47,7 +47,7 @@ class Route
             return;
         }
 
-        if ($this->autoRoute($uri)) {
+        if (!$this->autoRoute($uri)) {
             throw new Error404Exception();
         }
     }

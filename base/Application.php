@@ -31,8 +31,6 @@ class Application
         } catch (RedirectException $e) {
             header('Location:' . $e->getUrl());
         } catch (Error404Exception $e) {
-            var_dump(debug_print_backtrace());
-            var_dump(debug_backtrace());
             header($_SERVER["SERVER_PROTOCOL"]." 404 not found", true, 404);
             echo 'Page not found';
         }
