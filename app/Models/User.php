@@ -9,7 +9,6 @@ class User
     private $name;
     private $password;
     private $email;
-    private $admin;
 
     public function __construct(array $data)
     {
@@ -28,7 +27,6 @@ class User
 
         $user = new self($data);
         $user->id = $data['id'];
-        $user->admin = in_array($data['id'], ADMIN_IDS);
         return $user;
     }
 

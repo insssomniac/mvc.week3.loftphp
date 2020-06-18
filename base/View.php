@@ -23,7 +23,6 @@ class View
 
     public function render(string $tpl, $templateData = []): string
     {
-        var_dump($templateData);
         foreach ($templateData as $key => $value) {
             $this->data[$key] = $value;
         }
@@ -37,7 +36,9 @@ class View
     {
         if (!$this->twig) {
             $twigLoader = new \Twig\Loader\FilesystemLoader($this->templatePath);
-            $this->twig = new \Twig\Environment($twigLoader);
+            $this->twig = new \Twig\Environment($twigLoader, [
+                'cache' => $this->templatePath,
+            ]);
         }
 
         return $this->twig->render($tpl, $templateData);

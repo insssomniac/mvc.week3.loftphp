@@ -6,6 +6,7 @@ use Base\Db;
 class Post
 {
     private $id;
+    private $title;
     private $text;
     private $createdAt;
     private $authorId;
@@ -16,6 +17,7 @@ class Post
 
     public function __construct(array $data)
     {
+        $this->title = $data['title'];
         $this->text = $data['text'];
         $this->authorId = $data['author_id'];
         $this->image = $data['image'] ?? '';
@@ -25,9 +27,9 @@ class Post
     public function createPost()
     {
         $db = Db::getInstance();
-        $res = $db->execQuery("INSERT INTO posts (text, author_id, image) 
-            VALUES (:text, :author_id, :image)",
-            [':text' => $this->text, ':author_id' => $this->authorId, ':image' => $this->image]);
+        $res = $db->execQuery("INSERT INTO posts (title, text, author_id, image) 
+            VALUES (:title, :text, :author_id, :image)",
+            [':title' => $this->title, ':text' => $this->text, ':author_id' => $this->authorId, ':image' => $this->image]);
 
         return $res;
     }
@@ -74,6 +76,14 @@ class Post
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
     }
 
     /**
@@ -142,7 +152,8 @@ class Post
         return[
             'id' => $this->id,
             'author_id' => $this->authorId,
-            'content' => $this->text,
+            'title' => $this->title,
+            'text' => $this->text,
             'created_at' => $this->createdAt,
             'image' => $this->image,
         ];

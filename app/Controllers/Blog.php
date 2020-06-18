@@ -25,7 +25,8 @@ class Blog extends Controller
                 }
             });
         }
-        return $this->view->render('blog.phtml', ['posts' => $posts, 'user' => $this->getUser()]);
+//        return $this->view->render('blog.phtml', ['posts' => $posts, 'user' => $this->getUser()]);
+        return $this->view->renderTwig('blog.html', ['posts' => $posts, 'user' => $this->getUser()]);
     }
 
     public function createPost()
@@ -39,7 +40,13 @@ class Blog extends Controller
             $this->error('Поле Текст обязательно для заполнения');
         }
 
+        $title = (string) $_POST['title'];
+        if (!$title) {
+            $this->error('Поле Заголовок обязательно для заполнения');
+        }
+
         $post = new Post([
+            'title' => $title,
             'text' => $text,
             'author_id' => $this->getUserId(),
         ]);

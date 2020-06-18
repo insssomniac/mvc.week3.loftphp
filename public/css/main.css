@@ -1,0 +1,292 @@
+a {
+    color: inherit;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+}
+
+p {
+    margin-top: 0;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+body, html {
+    height: 100%;
+}
+
+body{
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.42;
+    background: #001821;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    overflow: hidden;
+    min-width: 1200px;
+}
+
+.top-line {
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 25px;
+    background: #001821;
+    color: white;
+}
+
+.main-title {
+    display: block;
+    font-size: 72px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.main-content {
+    background: #fff;
+    color: #303030;
+    padding-top: 100px;
+    padding-bottom: 90px;
+}
+
+.container{
+    margin: 0 auto;
+    width: 1140px;
+}
+
+.posts {
+    margin-bottom: 70px;
+}
+
+.posts__item{
+    margin-bottom: 50px;
+    display: flex;
+    text-decoration: none;
+}
+
+.posts__item:last-child {
+    margin-bottom: 0;
+}
+
+.posts__picture-wrap {
+    margin-right: 5%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.post_img {
+    width: 450px;
+    height: 300px;
+    border-radius: 6px;
+}
+
+.posts__author-date-container {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.posts__author {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    color: grey;
+    font-size: 12px;
+}
+
+.posts__date {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+    color: grey;
+    font-size: 12px;
+}
+
+.posts__content {
+    flex: 1;
+    padding-top: 15px;
+}
+
+.posts__title {
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.posts__text {
+    margin-bottom: 30px;
+}
+
+
+
+.inner-section {
+    color: #202123;
+    padding: 85px 0 80px;
+    background: #F4F5F5;
+}
+
+.inner-section__title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+
+.form__row {
+    display: flex;
+    margin-bottom: 28px;
+}
+
+.form__input {
+    margin-right: 30px;
+    flex: 1;
+    border-radius: 4px;
+    border: none;
+    background: #fff;
+    padding: 22px 30px;
+    font-size: 18px;
+    border: 1px transparent solid;
+}
+
+.form__input:focus {
+    outline: 0;
+    border: 1px #E7E7E7 solid;
+}
+
+.form__input:last-child {
+    margin-right: 0;
+}
+
+.form__input::placeholder {
+    color: #708090;
+}
+
+.form__input--textarea {
+    height: 232px;
+}
+
+.form__upload-title {
+    font-size: 18px;
+    width: 33%;
+    color: #1A1B1E;
+}
+
+.form__btns {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form__btn {
+    margin-right: 20px;
+}
+
+.form__btn:last-child {
+    margin-right: 0;
+}
+
+
+
+.btn {
+    display: inline-block;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.btn--regular {
+    padding: 10px 20px;
+}
+
+.btn--red {
+    background: #F5170E;
+    color: #fff;
+    transition: .5s;
+}
+
+.btn--gray {
+    background: #8E8E8E;
+    color: #fff;
+    transition: .5s;
+}
+
+.btn--gray:hover {
+    background: #2B2B2B;
+}
+
+.btn--red:hover {
+    background: #DA0100;
+}
+
+.btn--white {
+    color: #F5170E;
+    border: 1px solid #F5170E;
+    transition: .5s;
+}
+
+.btn--white:hover {
+    color: #fff;
+    background: #F5170E;
+}
+
+
+
+.file-upload {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.file-upload .btn-tertiary {
+    color: #8E8E8E;
+    display: flex;
+    border: 1px solid #8E8E8E;
+}
+.file-upload .btn-tertiary:hover, .file-upload .btn-tertiary:focus {
+    color:#888;
+    border-color:#888
+}
+.file-upload .input-file {
+    width:.1px;
+    height:.1px;
+    opacity:0;
+    overflow:hidden;
+    position:absolute;
+    z-index:-1
+}
+.file-upload .input-file + .labelFile {
+    white-space:nowrap;
+    padding: 10px 20px;
+    cursor:pointer
+}

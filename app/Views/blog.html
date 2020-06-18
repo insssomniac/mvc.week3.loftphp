@@ -1,51 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Блог</title>
 </head>
-<style>
-    .post { margin: 5px 0 0 5px; border: 1px solid grey; width: 450px; min-height: 100px;}
-    .author { margin-left: 10px; }
-    .text { padding-left: 15px; padding-top: 15px; }
-    .date {color: grey; font-size: 11px;}
-    .admin a { color: #46468b; float: right; padding-right: 15px; }
-</style>
+
 <body>
+<div class="wrapper">
+    <section class="top-line">
+        <div class="container top-line__container">
+            <header class="header">
+                <h1 class="main-title top-line__title">Yet Another Interesting Blog</h1>
+            </header>
+        </div>
+    </section>
 
-Блог: <br>
+    <main class="main-content">
+        <div class="container">
+            <ul class="posts">
+                {% for post in posts %}
+                <li class="posts__item">
+                    {% if post.getImage %}
+                    <div class="posts__picture-wrap">
+                        <img class="post_img" src="/images/{{post.getImage}}">
+                    </div>
+                    {% endif %}
+                    <div class="posts__content">
+                        <h2 class="posts__title">{{post.title}}</h2>
+                        <div class="posts__author-date-container">
+                            {% set author = post.getAuthor %}
+                            {% if author %}
+                            <div class="posts__author">{{author.getName}}</div>
+                            {% else %}
+                            <div class="posts__author">Автор был удален за ненадобностью</div>
+                            {% endif %}
+                            <div class="posts__date">{{post.createdAt}}</div>
+                        </div>
 
-<?php if($posts = $this->posts): ?>
-<?php foreach ($posts as $post): ?>
-<div class="post">
-    <? if($user->isAdmin()): ?>
-    <div class="admin">
-        <a href="/admin/deletePost/?id=<?=$post->getId();?>">Удалить пост</a>
-    </div>
-    <? endif; ?>
-    <span class="date"><?=$post->getCreatedAt();?> </span>
-    <? if($author = $post->getAuthor()):?>
-    <span class="author"><?=htmlspecialchars($author->getName());?></span>
-    <? else: ?>
-    <span class="author">Автор был удален за ненадобностью</span>
-    <? endif; ?>
-    <div class="text"><?=htmlspecialchars(nl2br($post->getText()));?></div>
-    <? if($post->getImage()):?>
-    <div><img src="/images/<?=$post->getImage();?>" style="width: 150px;"></div>
-    <? endif;?>
-</div>
-<?php endforeach; ?>
-<?php else: ?>
-Постов пока нет
-<?php endif; ?>
-
-Добавить пост
-<form enctype="multipart/form-data" action="/blog/createPost" method="post">
-    <textarea style="width: 250px; height: 150px;" type="text" value="" name="text"></textarea><br><br>
-    Изображение: <input type="file" name="image"><br>
-    <input type="submit" value="Отправить">
-</form>
-
+                        <div class="posts__text">
+                            <p>{{post.text}}</p>
+                        </div>
+                        {% if user.isAdmin == true %}
+                        <a href="/admin/deletePost/?id={{post.id}}" class="btn btn--regular btn--white">Удалить пост</a>
+                        {% endif %}
+                    </div>
+                </li>
+                {% else %}
+                    Постов пока нет
+                {% endfor %}
+            </ul>
+        </div>
+        <section class="inner-section">
+            <div class="container">
+                <h2 class="inner-section__title">Добавить пост</h2>
+                <form class="form" enctype="multipart/form-data" action="/blog/createPost" method="post">
+                    <div class="form__row">
+                        <input type="text" name="title" placeholder="Заголовок поста" class="form__input">
+                    </div>
+                    <div class="form__row">
+                        <textarea type="text" class="form__input form__input--textarea" value="" name="text" placeholder="Очень интересный текст ;)"></textarea>
+                    </div>
+                    <div class="form__btns">
+                        <div class="file-upload">
+                            <input type="file" name="image" id="file" class="input-file">
+                            <label for="file" class="btn btn-tertiary labelFile">
+                                <span class="fileName">Загрузить файл</span>
+                            </label>
+                        </div>
+                        <button type="reset" class="form__btn btn btn--regular btn--gray">Очистить</button>
+                        <button type="submit" class="form__btn btn btn--regular btn--red">Отправить</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
 
