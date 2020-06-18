@@ -11,7 +11,23 @@ class Login extends Controller
         if ($this->getUser()) {
             $this->redirect('/blog');
         }
-        return $this->view->render('login.phtml',['title' => 'Главная', 'user' => $this->getUser()]);
+        return $this->view->render('base-login.html', ['title' => 'Yet Another Interesting Blog']);
+    }
+
+    public function authForm()
+    {
+        if ($this->getUser()) {
+            $this->redirect('/blog');
+        }
+        return $this->view->renderTwig('auth.html', ['title' => 'Добро пожаловать снова!', 'user' => $this->getUser()]);
+    }
+
+    public function registerForm()
+    {
+        if ($this->getUser()) {
+            $this->redirect('/blog');
+        }
+        return $this->view->renderTwig('register.html', ['title' => 'Простая регистрация', 'user' => $this->getUser()]);
     }
 
     public function auth()

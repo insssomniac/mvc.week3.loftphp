@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Yet Another Interesting Blog | Auth</title>
+</head>
+
+<body>
+<div class="central-form">
+    <div class="central-form__container">
+        <div class="container">
+            <h2 class="inner-section__title">{{title}}</h2>
+            <form class="form" action="/login/auth" method="post">
+                <div class="form__row">
+                    <input type="text" name="email" placeholder="Email" class="form__input">
+                </div>
+                <div class="form__row">
+                    <input type="text" name="password" placeholder="Пароль" class="form__input">
+                </div>
+                <div class="form__btns">
+                    <button type="submit" class="form__btn btn btn--regular btn--red">Войти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>

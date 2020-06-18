@@ -41,7 +41,7 @@ class __TwigTemplate_ab280ad7aa5d10cce5b6adf4eca1133a3942af66b5a25b1a0cb0a98696b
     <link href=\"https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap\" rel=\"stylesheet\">
     <link rel=\"stylesheet\" href=\"css/normalize.css\">
     <link rel=\"stylesheet\" href=\"css/main.css\">
-    <title>Блог</title>
+    <title>Yet Another Interesting Blog | Welcome</title>
 </head>
 
 <body>
@@ -49,7 +49,7 @@ class __TwigTemplate_ab280ad7aa5d10cce5b6adf4eca1133a3942af66b5a25b1a0cb0a98696b
     <section class=\"top-line\">
         <div class=\"container top-line__container\">
             <header class=\"header\">
-                <h1 class=\"main-title top-line__title\">Yet Another Interesting Blog</h1>
+                <h1 class=\"main-title\">Yet Another Interesting Blog</h1>
             </header>
         </div>
     </section>
