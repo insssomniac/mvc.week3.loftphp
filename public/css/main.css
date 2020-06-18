@@ -122,7 +122,7 @@ body{
     flex: 1;
     justify-content: flex-start;
     color: grey;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .posts__date {
@@ -272,21 +272,22 @@ body{
     color: #8E8E8E;
     display: flex;
     border: 1px solid #8E8E8E;
+    transition: .5s;
 }
 .file-upload .btn-tertiary:hover, .file-upload .btn-tertiary:focus {
-    color:#888;
-    border-color:#888
+    color: #2B2B2B;
+    border-color: #2B2B2B;
 }
 .file-upload .input-file {
-    width:.1px;
-    height:.1px;
-    opacity:0;
-    overflow:hidden;
-    position:absolute;
-    z-index:-1
+    width: .1px;
+    height: .1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
 .file-upload .input-file + .labelFile {
-    white-space:nowrap;
+    white-space: nowrap;
     padding: 10px 20px;
-    cursor:pointer
+    cursor: pointer;
 }
