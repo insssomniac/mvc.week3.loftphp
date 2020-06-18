@@ -9,6 +9,7 @@ class User
     private $name;
     private $password;
     private $email;
+    private $admin;
 
     public function __construct(array $data)
     {
@@ -27,6 +28,7 @@ class User
 
         $user = new self($data);
         $user->id = $data['id'];
+        $user->admin = in_array($data['id'], ADMIN_IDS);
         return $user;
     }
 
@@ -84,11 +86,6 @@ class User
         return sha1('fg#%^&hj' . $password);
     }
 
-    public function isAdmin(): bool
-    {
-        return in_array($this->id, ADMIN_IDS);
-    }
-
     /**
      * @return mixed
      */
@@ -112,6 +109,16 @@ class User
     {
         return $this->password;
     }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return in_array($this->id, ADMIN_IDS);
+    }
+
+
 
 
 }

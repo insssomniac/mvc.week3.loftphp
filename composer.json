@@ -3,6 +3,7 @@
     "psr-4": {"App\\": "app/", "Base\\": "base/"}
   },
   "require": {
-    "ext-mbstring": "*"
+    "ext-mbstring": "*",
+    "twig/twig": "^2.0"
   }
 }

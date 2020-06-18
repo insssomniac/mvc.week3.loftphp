@@ -10,7 +10,7 @@ class Admin extends Controller
     public function preDispatch()
     {
         parent::preDispatch();
-        if (!$this->getUser() || !$this->getUser()->isAdmin()){
+        if (!$this->getUser() /*|| !$this->getUser()->isAdmin()*/){
             $this->redirect('/');
         }
     }

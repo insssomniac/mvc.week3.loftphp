@@ -5,6 +5,7 @@ class View
 {
     private $templatePath;
     private $data;
+    private $twig;
 
     public function __construct()
     {
@@ -22,6 +23,7 @@ class View
 
     public function render(string $tpl, $templateData = []): string
     {
+        var_dump($templateData);
         foreach ($templateData as $key => $value) {
             $this->data[$key] = $value;
         }
@@ -29,5 +31,15 @@ class View
         include $this->templatePath . '/' . $tpl;
         $templateData = ob_get_clean();
         return $templateData;
+    }
+
+    public function renderTwig(string $tpl, $templateData = [])
+    {
+        if (!$this->twig) {
+            $twigLoader = new \Twig\Loader\FilesystemLoader($this->templatePath);
+            $this->twig = new \Twig\Environment($twigLoader);
+        }
+
+        return $this->twig->render($tpl, $templateData);
     }
 }

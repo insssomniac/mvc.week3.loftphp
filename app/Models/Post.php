@@ -19,6 +19,7 @@ class Post
         $this->text = $data['text'];
         $this->authorId = $data['author_id'];
         $this->image = $data['image'] ?? '';
+        $this->createdAt = $data['created_at'] ?? '';
     }
 
     public function createPost()

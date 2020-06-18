@@ -6,7 +6,7 @@ use Base\Controller;
 
 class Api extends Controller
 {
-    public function getUserMessages()
+    public function getUserPosts()
     {
         $userId = (int) $_GET['user_id'] ?? 0;
         if (!$userId) {
