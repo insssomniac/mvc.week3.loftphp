@@ -249,7 +249,7 @@ body{
 }
 
 .btn--regular {
-    padding: 14px 30px;
+    padding: 12px 28px;
 }
 
 .btn--red {
@@ -315,6 +315,6 @@ body{
 }
 .file-upload .input-file + .labelFile {
     white-space: nowrap;
-    padding: 10px 20px;
+    padding: 12px 28px;
     cursor: pointer;
 }
