@@ -162,7 +162,14 @@ class Post
     public static function deletePost(int $postId)
     {
         $db = Db::getInstance();
+        $pic = $db->fetchOne("SELECT image FROM posts WHERE id = :postId", [':postId' => $postId]);
         $query = "DELETE FROM posts WHERE id = $postId";
-        return $db->execQuery($query);
+        $ret = $db->execQuery($query);
+        if ($ret == true && $pic['image']) {
+            unlink('images/' . $pic['image']);
+            return $ret;
+        } else {
+            return $ret;
+        }
     }
 }

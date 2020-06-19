@@ -44,7 +44,6 @@ class Db
         $prepared = $this->getDbConnect()->prepare($query);
         $ret = $prepared->execute($params);
 
-        //интересный подход к выводу ошибок, записал себе )
         if (!$ret) {
             $errorInfo = $prepared->errorInfo();
             trigger_error("{$errorInfo[0]}#{$errorInfo[1]}: " . $errorInfo[2]);
