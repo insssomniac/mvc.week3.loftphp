@@ -82,4 +82,10 @@ class Login extends Controller
         $this->session->authUser($user->getId());
         $this->redirect('/blog');
     }
+
+    public function logout()
+    {
+        session_destroy();
+        header('Location: /');
+    }
 }

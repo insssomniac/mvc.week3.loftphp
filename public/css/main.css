@@ -78,11 +78,46 @@ body{
 .top-line {
     height: 400px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     padding-bottom: 25px;
     background: #001821;
     color: white;
+}
+
+.container{
+    margin: 0 auto;
+    width: 1140px;
+}
+
+.top-line__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header__col--align--right {
+    padding: 60px 60px 0 0;
+    position: absolute;
+}
+
+.text-grey {
+    color: #999;
+}
+
+.top-line__title {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-title {
@@ -102,11 +137,6 @@ body{
     color: #303030;
     padding-top: 100px;
     padding-bottom: 90px;
-}
-
-.container{
-    margin: 0 auto;
-    width: 1140px;
 }
 
 .posts {
