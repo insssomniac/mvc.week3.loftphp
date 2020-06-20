@@ -181,11 +181,14 @@ class Post
         $pic = $db->fetchOne("SELECT image FROM posts WHERE id = :postId", [':postId' => $postId]);
         $query = "DELETE FROM posts WHERE id = $postId";
         $ret = $db->execQuery($query);
-        if ($ret == true && $pic['image'] && file_exists('images/' . $pic['image'])) {
-            unlink('images/' . $pic['image']);
-            return $ret;
-        } else {
-            return $ret;
+        if ($ret == true && $pic['image']) {
+            $imgPath = 'images/' . $pic['image'];
+            if (file_exists($imgPath)) {
+                unlink($imgPath);
+                return $ret;
+            }
         }
+
+        return $ret;
     }
 }
