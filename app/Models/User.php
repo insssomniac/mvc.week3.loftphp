@@ -2,6 +2,9 @@
 namespace App\Models;
 
 use Base\Db;
+use Swift_SmtpTransport;
+use Swift_Mailer;
+use Swift_Message;
 
 class User
 {
@@ -60,8 +63,25 @@ class User
                 'email' => $this->email,
             ]
         );
-
         $this->id = $db->lastInsertedId();
+
+        //Create the email about successful registration
+        if ($res == true) {
+            try {
+                $transport = (new Swift_SmtpTransport(SMTP_HOST, SMTP_PORT, 'ssl'))
+                    ->setUsername(SMTP_USER)
+                    ->setPassword(SMTP_PASSWORD);
+                $mailer = (new Swift_Mailer($transport));
+                $message = (new Swift_Message('Вы успешно зарегистрировались'))
+                    ->setFrom(SMTP_USER)
+                    ->setTo($this->email)
+                    ->setBody('Поздравляем! Вы успешно зарегистрировались на Интересном блоге, добро пожаловать на борт!');
+                $result = $mailer->send($message);
+            } catch (Exception $e) {
+                echo print_r($e->getMessage());
+                echo print_r($e->getTrace(), 1);
+            }
+        }
 
         return $res;
     }

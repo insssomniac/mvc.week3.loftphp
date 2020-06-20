@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use Base\Db;
+use Intervention\Image\ImageManagerStatic as IImage;
 
 class Post
 {
@@ -136,7 +137,22 @@ class Post
         if (file_exists($file)) {
             $this->image = $this->genFileName();
             move_uploaded_file($file, getcwd() . '/images/' . $this->image);
+            $image = 'images/' . $this->image;
+            $this->imageHandler($image);
         }
+    }
+
+    public function imageHandler(string $image)
+    {
+        $img = IImage::make($image)
+            ->resize(800, null, function ($constraint){
+                $constraint->aspectRatio();
+            })
+            ->text('YAIB',20,20, function($font){
+                $font->size(30);
+                $font->color('#E7E7E7');
+            })
+            ->save($image);
     }
 
     /**
@@ -165,7 +181,7 @@ class Post
         $pic = $db->fetchOne("SELECT image FROM posts WHERE id = :postId", [':postId' => $postId]);
         $query = "DELETE FROM posts WHERE id = $postId";
         $ret = $db->execQuery($query);
-        if ($ret == true && $pic['image']) {
+        if ($ret == true && $pic['image'] && file_exists('images/' . $pic['image'])) {
             unlink('images/' . $pic['image']);
             return $ret;
         } else {

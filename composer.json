@@ -4,6 +4,8 @@
   },
   "require": {
     "ext-mbstring": "*",
-    "twig/twig": "^2.0"
+    "twig/twig": "^2.0",
+    "swiftmailer/swiftmailer": "^6.0",
+    "intervention/image": "^2.5"
   }
 }
