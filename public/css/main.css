@@ -159,7 +159,7 @@ body{
     object-fit: cover;
 }
 
-.post_img {
+.post__img {
     width: 450px;
     height: 300px;
     border-radius: 6px;
@@ -224,7 +224,6 @@ body{
     margin-right: 30px;
     flex: 1;
     border-radius: 4px;
-    border: none;
     background: #fff;
     padding: 22px 30px;
     font-size: 18px;
